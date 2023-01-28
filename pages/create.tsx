@@ -5,7 +5,7 @@ import {
 } from "@thirdweb-dev/react";
 import {
   ChainId,
-  NATIVE_TOKEN_ADDRESS,
+  //NATIVE_TOKEN_ADDRESS,
   TransactionResult,
 } from "@thirdweb-dev/sdk";
 import type { NextPage } from "next";

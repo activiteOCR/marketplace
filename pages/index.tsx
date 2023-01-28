@@ -38,13 +38,13 @@ const Home: NextPage = () => {
 
         <hr className={styles.divider} /> */}
 
-        <div style={{ marginTop: 32, marginBottom: 32 }}>
+        {/* <div style={{ marginTop: 32, marginBottom: 32 }}>
           <Link href="/create">
             <a className={styles.mainButton} style={{ textDecoration: "none" }}>
               Create A Listing
             </a>
           </Link>
-        </div>
+        </div> */}
 
         <div className="main">
           {
