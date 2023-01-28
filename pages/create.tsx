@@ -50,15 +50,6 @@ const Create: NextPage = () => {
         );
       }
 
-      // For Auction Listings:
-      if (listingType.value === "auctionListing") {
-        transactionResult = await createAuctionListing(
-          contractAddress.value,
-          tokenId.value,
-          price.value
-        );
-      }
-
       // If the transaction succeeds, take the user back to the homepage to view their listing!
       if (transactionResult) {
         router.push(`/`);

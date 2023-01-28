@@ -40,6 +40,13 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
+  background-image: url("/images/fond.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  background-position: center center;
 }
 
 .page {
@@ -78,7 +85,8 @@
 }
 
 .header {
-  background-color: #262936;
+  /* background-color: #262936; */
+  background-color: #07001F;
   position: fixed;
   top: 0;
   left: 0;
@@ -135,9 +143,13 @@
   transition-duration: 200ms;
   height: 3rem;
   min-width: 3rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   background: #e5e5ea;
-  background-image: linear-gradient(to left, #cc25b3 0%, #418dff 101.52%);
+  background-image: linear-gradient(
+    to left,
+    var(--color-primary) 0%,
+    var(--color-secondary) 101.52%
+  );
   color: #fff;
   width: 180px;
   text-align: center;

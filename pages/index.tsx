@@ -18,34 +18,6 @@ const Home: NextPage = () => {
     <>
       {/* Content */}
       <div className={styles.container}>
-        {/* Top Section */}
-        {/* <h1 className={styles.h1}>NFT Marketplace w/ thirdweb + Next.JS</h1>
-        <p className={styles.explain}>
-          Build an NFT marketplace using{" "}
-          <b>
-            {" "}
-            <a
-              href="https://thirdweb.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.purple}
-            >
-              thirdweb
-            </a>
-          </b>{" "}
-          to list your ERC721 and ERC1155 tokens for auction or for direct sale.
-        </p>
-
-        <hr className={styles.divider} /> */}
-
-        {/* <div style={{ marginTop: 32, marginBottom: 32 }}>
-          <Link href="/create">
-            <a className={styles.mainButton} style={{ textDecoration: "none" }}>
-              Create A Listing
-            </a>
-          </Link>
-        </div> */}
-
         <div className="main">
           {
             // If the listings are loading, show a loading message

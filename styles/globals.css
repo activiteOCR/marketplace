@@ -24,17 +24,36 @@ select {
   font: inherit;
 }
 
+/* Change the values in here to match your branding */
 :root {
-  --black: #1c1e21;
-  --white: #ffffff;
-  --tw-color1: #a855f7;
-  --tw-color1-hover: #9333ea;
+  /* Background color of the page */
+  --background-color: #07001F;
+
+  /* Color of the text/words */
+  --text-color: #fff;
+
+  /* Main color of your brand */
+  --color-primary: #02efee;
+
+  /* Secondary color of your brand */
+  --color-secondary: #418dff;
+
+  /* Which font you want to use */
+  --font: "NES Controller", "Bebas Regular";
+
+  /* Color of the border around items */
+  --border-color: #02efee;
 }
 
+/* --- Don't need to modify below here --- */
+
+/* Default design values of the entire document */
+
 body {
-  background: var(--black);
-  font-family: "Inter", sans-serif;
-  color: var(--white);
+  background: var(--background-color);
+  font-size: 25px;
+  font-family: var(--font);
+  color: var(--text-color);
   display: flex;
   margin: 0;
   text-align: center;
@@ -42,4 +61,29 @@ body {
 
 h2 {
   font-size: 2rem;
+}
+
+@font-face {
+  font-family: "GT America";
+  src: url("/fonts/GT-America-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bebas Regular";
+  src: url("/fonts/FontsFree-Net-Bebas-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NES Controller";
+  src: url("/fonts/NES_Controller_MrShrike.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "PressStart2P";
+  src: url("/fonts/PressStart2P-vaV7.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
