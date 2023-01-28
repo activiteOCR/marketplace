@@ -5,7 +5,6 @@ import {
 } from "@thirdweb-dev/react";
 import {
   ChainId,
-  //NATIVE_TOKEN_ADDRESS,
   TransactionResult,
 } from "@thirdweb-dev/sdk";
 import type { NextPage } from "next";
@@ -69,30 +68,6 @@ const Create: NextPage = () => {
     }
   }
 
-  async function createAuctionListing(
-    contractAddress: string,
-    tokenId: string,
-    price: string
-  ) {
-    try {
-      const transaction = await marketplace?.auction.createListing({
-        assetContractAddress: contractAddress, // Contract Address of the NFT
-        buyoutPricePerToken: price, // Maximum price, the auction will end immediately if a user pays this price.
-        //currencyContractAddress: NATIVE_TOKEN_ADDRESS, // NATIVE_TOKEN_ADDRESS is the crpyto curency that is native to the network. i.e. Goerli ETH.
-        currencyContractAddress: "0x0aB71c161701a4511B9B1aE3EeFbBb2f9236dADa", // NATIVE_TOKEN_ADDRESS is the crpyto curency that is native to the network. i.e. Goerli ETH.
-        listingDurationInSeconds: 60 * 60 * 24 * 7, // When the auction will be closed and no longer accept bids (1 Week)
-        quantity: 1, // How many of the NFTs are being listed (useful for ERC 1155 tokens)
-        reservePricePerToken: 0, // Minimum price, users cannot bid below this amount
-        startTimestamp: new Date(), // When the listing will start
-        tokenId: tokenId, // Token ID of the NFT.
-      });
-
-      return transaction;
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   async function createDirectListing(
     contractAddress: string,
     tokenId: string,
@@ -136,16 +111,6 @@ const Create: NextPage = () => {
             />
             <label htmlFor="directListing" className={styles.listingTypeLabel}>
               Direct Listing
-            </label>
-            <input
-              type="radio"
-              name="listingType"
-              id="auctionListing"
-              value="auctionListing"
-              className={styles.listingType}
-            />
-            <label htmlFor="auctionListing" className={styles.listingTypeLabel}>
-              Auction Listing
             </label>
           </div>
 
