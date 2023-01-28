@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           {
             // If the listings are loading, show a loading message
             loadingListings ? (
-              <div>Loading listings...</div>
+              <div className={styles.loadingOrError}>Loading...</div>
             ) : (
               // Otherwise, show the listings
               <div className={styles.listingGrid}>
