@@ -3,6 +3,7 @@ import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 import Head from "next/head";
 import Header from "../components/Header";
+import { Analytics } from '@vercel/analytics/react';
 
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Goerli;
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Header />
       <Component {...pageProps} />
+      <Analytics />
     </ThirdwebProvider>
   );
 }
