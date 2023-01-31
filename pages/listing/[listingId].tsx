@@ -4,10 +4,14 @@ import {
   useNetworkMismatch,
   useListing,
   useContract,
+  useAddress,
+  useContractWrite,
 } from "@thirdweb-dev/react";
 import {
   ChainId,
 } from "@thirdweb-dev/sdk";
+import axios from "axios";
+import { assert } from "console";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { marketplaceContractAddress, tokenContractAddress, stakContractAddress } from "../../addresses";
@@ -32,6 +36,12 @@ const ListingPage: NextPage = () => {
   // Initialize the token contract
   const { contract: megToken } = useContract(tokenContractAddress, "token");
 
+  // Initialize the NFT stake contract
+  const { contract: megStake } = useContract(stakContractAddress, "stake");
+  const { mutateAsync: depositRewardTokens, isLoading } = useContractWrite(megStake, "depositRewardTokens")
+
+  const address = useAddress();
+
   // Fetch the listing from the marketplace contract
   const { data: listing, isLoading: loadingListing } = useListing(
     marketplace,
@@ -47,23 +57,38 @@ const ListingPage: NextPage = () => {
   }
 
   async function buyNft(
-    price: string,
-    name: any,
-    image: any,
-    ) {
+    rental_duration: string,
+    amount: string
+  ) {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
         switchNetwork && switchNetwork(ChainId.Goerli);
         return;
       }
-      console.log(name,image);
+
+       // Address of the wallet who bought the WL
+      const fromAddress = String(address);
       // Address of the wallet you want to send the tokens to
       const toAddress = stakContractAddress;
       // The number of tokens you want to send
-      const amount = price;
+      //const amount = price;
+
+      // Add approve + reward
+      await megToken?.allowance(fromAddress);
+      await depositRewardTokens([ amount ]);
 
       await megToken?.transfer(toAddress, amount);
+
+      console.log(listing?.asset);
+
+      const res = await axios.post('https://endpointapi/discord', {
+        wallet: fromAddress,
+        rental_duration: rental_duration,
+        item_name: listing?.asset.name,
+        image: listing?.asset.image,
+        rental_url: listing?.asset.external_url,
+    });
       
       alert("WL bought successfully!");
     } catch (error) {
@@ -109,7 +134,8 @@ const ListingPage: NextPage = () => {
             <button
               style={{ borderStyle: "none" }}
               className={styles.mainButton}
-              onClick={() => buyNft(listing.buyoutCurrencyValuePerToken.displayValue, listing.asset.name, listing.asset.image)}
+              onClick={() => buyNft("1", listing.buyoutCurrencyValuePerToken.displayValue)}
+
             >
               Buy
             </button>
