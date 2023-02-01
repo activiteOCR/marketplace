@@ -10,6 +10,7 @@ import {
 import {
   ChainId,
 } from "@thirdweb-dev/sdk";
+import { useState } from "react";
 import axios from "axios";
 import { assert } from "console";
 import type { NextPage } from "next";
@@ -29,6 +30,7 @@ const ListingPage: NextPage = () => {
   // Hooks to detect user is on the right network and switch them if they are not
   const networkMismatch = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
+  const [quantity, setQuantity] = useState(1);
 
   // Initialize the marketplace contract
   const { contract: marketplace } = useContract(marketplaceContractAddress, "marketplace");
@@ -117,7 +119,25 @@ const ListingPage: NextPage = () => {
                 listing.sellerAddress?.slice(36, 40)}
             </b>
           </p>
+          <p>Quantity</p>
+            <div className={styles.quantityContainer}>
+              <button
+                className={`${styles.quantityControlButton}`}
+                onClick={() => setQuantity(quantity - 1)}
+                disabled={quantity <= 1}
+              >
+                -
+              </button>
 
+              <h4>{quantity}</h4>
+
+              <button
+                className={`${styles.quantityControlButton}`}
+                onClick={() => setQuantity(quantity + 1)}
+              >
+                +
+              </button>
+            </div>
           <h2>
             <b>{listing.buyoutCurrencyValuePerToken.displayValue}</b>{" "}
             {listing.buyoutCurrencyValuePerToken.symbol}

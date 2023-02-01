@@ -13,6 +13,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   const { contract: marketplace } = useContract(marketplaceContractAddress, "marketplace");
   const { data: listings, isLoading: loadingListings } = useActiveListings(marketplace);
+  
 
   return (
     <>
@@ -46,7 +47,6 @@ const Home: NextPage = () => {
                         <a className={styles.name}>{listing.asset.name}</a>
                       </Link>
                     </h2>
-
                     <p>
                       <b>{listing.buyoutCurrencyValuePerToken.displayValue}</b>{" "}
                       {listing.buyoutCurrencyValuePerToken.symbol}
