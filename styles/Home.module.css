@@ -40,7 +40,7 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  background-image: url("/images/fond.png");
+  /* background-image: url("/images/fond.png"); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -270,6 +270,36 @@
   width: 24%;
   margin-top: 8px;
   cursor: pointer;
+}
+
+.mintAreaRight {
+  /* background-color: #07001F; */
+  /* color: black; */
+  font-family: "NES Controller";
+  padding: 15px;
+  opacity: 0.75;
+  border-radius: 10px;
+}
+
+.quantityContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  gap: 10%;
+  margin-bottom: 20px;
+}
+
+.quantityControlButton {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 2rem;
+  background-color: transparent;
+  border: 1px solid grey;
+  color: #fff;
 }
 
 /* On Mobile, make listingShortView 49% */

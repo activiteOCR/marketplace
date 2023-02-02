@@ -109,16 +109,16 @@ const ListingPage: NextPage = () => {
           />
         </div>
 
-        <div className={styles.rightListing}>
+        <div className={styles.mintAreaRight}>
           <h1>{listing.asset.name}</h1>
-          <p>
+          {/* <p>
             Owned by{" "}
             <b>
               {listing.sellerAddress?.slice(0, 6) +
                 "..." +
                 listing.sellerAddress?.slice(36, 40)}
             </b>
-          </p>
+          </p> */}
           <p>Quantity</p>
             <div className={styles.quantityContainer}>
               <button
@@ -149,6 +149,7 @@ const ListingPage: NextPage = () => {
               flexDirection: "row",
               gap: 20,
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
             <button
