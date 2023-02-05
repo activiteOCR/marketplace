@@ -19,6 +19,7 @@ const Home: NextPage = () => {
     <>
       {/* Content */}
       <div className={styles.container}>
+      <h1 className={styles.h1}>Meg4mint Internal Marketplace</h1>
         <div className="main">
           {
             // If the listings are loading, show a loading message
