@@ -5,14 +5,14 @@ import {
   useListing,
   useContract,
   useAddress,
-  useContractWrite,
+  //useContractWrite,
 } from "@thirdweb-dev/react";
 import {
   ChainId,
 } from "@thirdweb-dev/sdk";
 import { useState } from "react";
 import axios from "axios";
-import { assert } from "console";
+//import { assert } from "console";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { marketplaceContractAddress, tokenContractAddress, stakContractAddress, coldWalletAddress } from "../../addresses";
@@ -74,9 +74,6 @@ const ListingPage: NextPage = () => {
       // Address of the wallet you want to send the tokens to
       const toAddress = stakContractAddress;
 
-      // Transfer token to cold wallet (ledger)
-      await megToken?.transfer(coldWalletAddress, amount);
-      
       // Work only for owner of Token contract
       // await megToken?.transfer(toAddress, amount);
       // await megToken?.setAllowance(toAddress, amount);
@@ -84,13 +81,19 @@ const ListingPage: NextPage = () => {
       //depositReward to refund NFT stake
       //await depositRewardTokens([ amount ]);
 
-    //   const res = await axios.post('https://endpointapi/discord', {
-    //     wallet: fromAddress,
-    //     rental_duration: rental_duration,
-    //     item_name: listing?.asset.name,
-    //     image: listing?.asset.image,
-    //     rental_url: listing?.asset.external_url,
-    // });
+      // Transfer token to cold wallet (ledger)
+      const transactionResponse = await megToken?.transfer(coldWalletAddress, amount);
+
+      const blockNumber = transactionResponse?.receipt.blockNumber;
+
+      const res = await axios.post('https://meg4min-back.onrender.com/', {
+        block: blockNumber,
+        wallet: fromAddress,
+        rental_duration: rental_duration,
+        item_name: listing?.asset.name,
+        image: listing?.asset.image,
+        rental_url: listing?.asset.external_url,
+    });
       
       alert("WL bought successfully!");
     } catch (error) {
