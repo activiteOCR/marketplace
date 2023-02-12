@@ -90,6 +90,7 @@ const ListingPage: NextPage = () => {
         block: blockNumber,
         wallet: fromAddress,
         rental_duration: rental_duration,
+        value: amount,
         item_name: listing?.asset.name,
         image: listing?.asset.image,
         rental_url: listing?.asset.external_url,
