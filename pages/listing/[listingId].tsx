@@ -86,7 +86,7 @@ const ListingPage: NextPage = () => {
 
       const blockNumber = transactionResponse?.receipt.blockNumber;
 
-      const res = await axios.post('https://meg4min-back.onrender.com/', {
+      const res = await axios.post('https://meg4min-back.onrender.com/api/participate', {
         block: blockNumber,
         wallet: fromAddress,
         rental_duration: rental_duration,
