@@ -84,9 +84,9 @@ const ListingPage: NextPage = () => {
       // Transfer token to cold wallet (ledger)
       const transactionResponse = await megToken?.transfer(coldWalletAddress, amount);
 
-      await new Promise(f => setTimeout(f, 5000));
-
       const blockNumber = await transactionResponse?.receipt.blockNumber;
+
+      await new Promise(f => setTimeout(f, 5000));
 
       const res = await axios.post('https://meg4min-back.onrender.com/api/participate', {
         block: blockNumber,
