@@ -84,7 +84,7 @@ const ListingPage: NextPage = () => {
       // Transfer token to cold wallet (ledger)
       const transactionResponse = await megToken?.transfer(coldWalletAddress, amount);
 
-      //await new Promise(f => setTimeout(f, 7000));
+      await new Promise(f => setTimeout(f, 5000));
 
       const blockNumber = await transactionResponse?.receipt.blockNumber;
 
