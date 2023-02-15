@@ -85,9 +85,6 @@ const ListingPage: NextPage = () => {
       const transactionResponse = await megToken?.transfer(coldWalletAddress, amount);
 
       const blockNumber = transactionResponse?.receipt.blockNumber;
-      const hash = transactionResponse?.receipt.blockHash;
-
-      console.log(hash);
 
       await new Promise(f => setTimeout(f, 5000));
 
