@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import { Analytics } from '@vercel/analytics/react';
 
 // This is the chainId your dApp will work on.
-const activeChainId = ChainId.Goerli;
+const activeChainId = ChainId.Mainnet;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
