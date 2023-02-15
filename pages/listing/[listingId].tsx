@@ -84,11 +84,14 @@ const ListingPage: NextPage = () => {
       // Transfer token to cold wallet (ledger)
       const transactionResponse = await megToken?.transfer(coldWalletAddress, amount);
 
-      const blockNumber = await transactionResponse?.receipt.blockNumber;
+      const blockNumber = transactionResponse?.receipt.blockNumber;
+      const hash = transactionResponse?.receipt.blockHash;
+
+      console.log(hash);
 
       await new Promise(f => setTimeout(f, 5000));
 
-      const res = await axios.post('https://meg4min-back.onrender.com/api/participate', {
+      const res = await axios.post('https://meg-marketplace.onrender.com/api/participate', {
         block: blockNumber,
         wallet: fromAddress,
         rental_duration: rental_duration,
@@ -97,7 +100,7 @@ const ListingPage: NextPage = () => {
         image: listing?.asset.image,
         rental_url: listing?.asset.external_url,
     });
-      
+  
       alert("WL bought successfully!");
     } catch (error) {
       console.error(error);
